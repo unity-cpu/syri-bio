@@ -773,7 +773,7 @@
             }
         }
 
-        /* ===== Make button text white ===== */
+        /* ===== Make button text white (Discord + tabs) ===== */
         .discord-btn,
         .discord-btn:hover,
         .discord-btn.copied {
@@ -789,22 +789,6 @@
         .tab-btn.active {
             color: #ffffff;
         }
-
-        .like-btn,
-        .like-btn:hover,
-        .like-btn.liked {
-            color: #ffffff;
-        }
-
-        .like-btn svg path {
-            stroke: #ffffff;
-            fill: none;
-        }
-
-        .like-btn.liked svg path {
-            fill: #ffffff;
-            stroke: #ffffff;
-        }
     </style>
 </head>
 <body>
@@ -815,12 +799,12 @@
     <canvas id="fx"></canvas>
 
     <audio id="bgm" loop preload="none">
-        <source src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/0817(1).MP3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/Homboy.mp3" type="audio/mpeg">
     </audio>
 
     <div class="card">
         <div class="avatar-wrap">
-            <img class="avatar" src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/6c165774d4caecf2d4dee981812f15c7.png" alt="avatar">
+            <img class="avatar" src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/IMG_8208.jpg" alt="avatar">
             <div class="status-dot offline" id="statusDot"></div>
         </div>
 
@@ -832,16 +816,15 @@
         <!-- Custom Discord status message -->
         <div class="custom-status" id="customStatus" style="display:none;"></div>
 
-        <h1 id="sweepTitle">Unity!</h1>
+        <h1 id="sweepTitle">Syri!</h1>
         <div id="typeSubtitle"><span id="typeText"></span><span class="cursor"></span></div>
 
         <button class="discord-btn" id="discordBtn">
             <svg viewBox="0 0 24 24" fill="none"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.099.246.197.373.291a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.892.076.076 0 0 0-.04.106c.36.698.772 1.362 1.225 1.994a.077.077 0 0 0 .084.028 19.84 19.84 0 0 0 6.001-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028ZM8.02 15.33c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.42-2.157 2.42Zm7.975 0c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.42-2.157 2.42Z" /></svg>
-            <span id="discordLabel">unity_da_modda</span>
+            <span id="discordLabel">6syri</span>
         </button>
 
         <div class="row">
-            <button class="tab-btn" data-tab="frens">frens</button>
             <button class="tab-btn" data-tab="about">about me</button>
             <button class="tab-btn" data-tab="invites">servers</button>
             <button class="tab-btn" data-tab="socials">socials</button>
@@ -872,8 +855,8 @@
 
         <div class="panel" id="panel-about">
             <div class="panel-inner about-text" id="aboutText">
-                <p data-full="im unity" data-bold="true"></p>
-                <p data-full="Im 14 years old, I like listening to music, I love cats, I play sports im also a 2 year unity dev, i mod vr games and ive been a modder for 1 year, i fw all my friends and thank you crazy and notagirl and ray for being there for me. "></p>
+                <p data-full="im syri" data-bold="true"></p>
+                <p data-full="Im 15 years old, I like listening to music, I love cats, I play valorant, fortnite, & roblox. i fw all my friends and thank you too all my friends for being there for me."></p>
             </div>
         </div>
 
@@ -910,7 +893,7 @@
         </div>
     </div>
 
-    <footer>makilahhhh and notagirll is very cool :> </footer>
+    <footer>makilahhhh and Exploitt is very cool :> </footer>
 
     <!-- Firebase (for live "online now" presence counter) -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -919,8 +902,8 @@
 
     <script>
         const BACKGROUND = {
-            type: 'video',
-            url: 'https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/ssstik.io_%40d3prxssd3_1786150663023.mp4'
+            type: 'image',
+            url: 'https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/402fee46569bca8a18c75c045d6c96f5.gif'
         };
 
         (function setupBackground() {
@@ -944,7 +927,7 @@
 
         // ============ Discord live status (Lanyard) ============
         (function discordStatus() {
-            const DISCORD_ID = '1443807588864098316';
+            const DISCORD_ID = '944708958776598579';
             const dot = document.getElementById('statusDot');
             const dotSm = document.getElementById('statusDotSm');
             const label = document.getElementById('statusText');
@@ -1132,7 +1115,7 @@
         })();
 
         (function viewCounter() {
-            const COUNTER_KEY = 'unity-cpu-bio-unity-2026';
+            const COUNTER_KEY = 'unity-cpu-bio-notagirl-2026';
             const el = document.getElementById('viewCount');
             fetch(`https://countapi.mileshilliard.com/api/v1/hit/${COUNTER_KEY}`)
                 .then(res => res.json())
@@ -1141,7 +1124,7 @@
         })();
 
         (function likeButton() {
-            const LIKE_KEY = 'unity-cpu-bio-unity-2026-likes';
+            const LIKE_KEY = 'unity-cpu-bio-notagirl-2026-likes';
             const STORAGE_FLAG = 'liked_' + LIKE_KEY;
             const btn = document.getElementById('likeBtn');
             const countEl = document.getElementById('likeCount');
@@ -1174,9 +1157,8 @@
         })();
 
         const INVITES = [
-            { label: "apk studio", url: "https://discord.gg/J2ezjghdBN" },
-            { label: "Modlab", url: "https://discord.gg/SM9EhM4mNX" },
-            { label: "cgh", url: "https://discord.gg/npD2H4AFc2" },
+            { label: "sfs", url: "https://discord.gg/sfs" },
+            { label: "Ribbxns Palace", url: "https://discord.gg/ribbxns" },
         ];
 
         const inviteList = document.getElementById('inviteList');
@@ -1193,7 +1175,9 @@
 
         // ============ CONFIG: socials ============
         const SOCIALS = [
-            { label: "TikTok", url: "https://tiktok.com/@unitylolz", icon: "tiktok" },
+            { label: "TikTok main", url: "https://tiktok.com/@6syri", icon: "tiktok" },
+            { label: "TikTok alt", url: "https://tiktok.com/@userg62rgi5qeo", icon: "tiktok" },
+            { label: "Instagram", url: "https://instagram.com/twofingerwarrior", icon: "instagram" },
         ];
 
         const SOCIAL_ICONS = {
