@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNITY !</title>
+    <title>SYRI !</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -11,9 +11,9 @@
             --bg: #000000;
             --panel: rgba(16,13,22,0.92);
             --panel-border: rgba(255,255,255,0.10);
-            --accent: #B084F5;
-            --accent-2: #7C4DFF;
-            --accent-dim: rgba(176,132,245,0.35);
+            --accent: #FF9EC7;
+            --accent-2: #FF6FB0;
+            --accent-dim: rgba(255,158,199,0.35);
             --text: #ffffff;
             --muted: #b8a9c9;
             --font: 'Poppins', sans-serif;
@@ -70,7 +70,7 @@
             position: fixed;
             inset: 0;
             z-index: 1;
-            background: radial-gradient(ellipse at 50% 40%, rgba(124,77,255,0.14), transparent 60%);
+            background: radial-gradient(ellipse at 50% 40%, rgba(255,158,199,0.14), transparent 60%);
             pointer-events: none;
             animation: vignettePulse 3s ease-in-out infinite;
         }
@@ -124,18 +124,18 @@
             border-radius: 50%;
             padding: 3px;
             background: conic-gradient(from 180deg, #ffffff, var(--accent), #ffffff, var(--accent-2), #ffffff);
-            box-shadow: 0 0 30px rgba(124,77,255,0.45), 0 0 70px rgba(176,132,245,0.25);
+            box-shadow: 0 0 30px rgba(255,158,199,0.45), 0 0 70px rgba(255,158,199,0.25);
             margin-bottom: 20px;
             animation: pulseGlow 1.6s ease-in-out infinite;
         }
 
         @keyframes pulseGlow {
             0%,100% {
-                box-shadow: 0 0 30px rgba(124,77,255,0.45), 0 0 70px rgba(176,132,245,0.25);
+                box-shadow: 0 0 30px rgba(255,158,199,0.45), 0 0 70px rgba(255,158,199,0.25);
             }
 
             50% {
-                box-shadow: 0 0 45px rgba(124,77,255,0.75), 0 0 100px rgba(176,132,245,0.45);
+                box-shadow: 0 0 45px rgba(255,158,199,0.75), 0 0 100px rgba(255,158,199,0.45);
             }
         }
 
@@ -256,7 +256,7 @@
             gap: 8px;
             background: var(--panel);
             border: 1px solid var(--panel-border);
-            color: var(--text);
+            color: var(--accent);
             font-family: var(--font);
             font-size: 14px;
             font-weight: 500;
@@ -269,14 +269,14 @@
 
             .discord-btn:hover {
                 border-color: var(--accent);
-                box-shadow: 0 0 18px rgba(124,77,255,0.35);
+                box-shadow: 0 0 18px rgba(255,158,199,0.35);
                 transform: translateY(-1px) scale(1.03);
             }
 
             .discord-btn.copied {
                 border-color: var(--accent);
                 color: var(--accent);
-                box-shadow: 0 0 18px rgba(124,77,255,0.45);
+                box-shadow: 0 0 18px rgba(255,158,199,0.45);
             }
 
             .discord-btn svg {
@@ -300,7 +300,7 @@
         .tab-btn {
             background: var(--panel);
             border: 1px solid var(--panel-border);
-            color: var(--text);
+            color: var(--accent);
             font-family: var(--font);
             font-size: 13.5px;
             font-weight: 500;
@@ -317,7 +317,7 @@
             .tab-btn.active {
                 border-color: var(--accent);
                 color: var(--accent);
-                box-shadow: 0 0 18px rgba(124,77,255,0.4);
+                box-shadow: 0 0 18px rgba(255,158,199,0.4);
             }
 
         .panel {
@@ -326,7 +326,7 @@
             background: var(--panel);
             border: 1px solid var(--panel-border);
             border-radius: 14px;
-            box-shadow: 0 12px 32px rgba(124,77,255,0.15);
+            box-shadow: 0 12px 32px rgba(255,158,199,0.15);
             overflow: hidden;
             max-height: 0;
             opacity: 0;
@@ -355,7 +355,7 @@
             }
 
             .panel-inner::-webkit-scrollbar-thumb {
-                background: rgba(176,132,245,0.35);
+                background: rgba(255,158,199,0.35);
                 border-radius: 10px;
             }
 
@@ -441,7 +441,7 @@
                 .invite-list a:hover {
                     border-color: var(--accent);
                     color: var(--accent);
-                    background: rgba(124,77,255,0.1);
+                    background: rgba(255,158,199,0.1);
                 }
 
                 .invite-list a .label {
@@ -772,6 +772,66 @@
                 animation: none;
             }
         }
+
+        /* ===== White buttons (overrides) ===== */
+        .discord-btn,
+        .tab-btn {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #111111;
+        }
+
+        .discord-btn:hover,
+        .tab-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 18px rgba(255, 158, 199, 0.35);
+            transform: translateY(-1px) scale(1.03);
+        }
+
+        .discord-btn.copied {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 18px rgba(255, 158, 199, 0.45);
+        }
+
+        .discord-btn svg path {
+            fill: #111111;
+        }
+
+        .discord-btn:hover svg path,
+        .discord-btn.copied svg path {
+            fill: var(--accent);
+        }
+
+        .tab-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 18px rgba(255, 158, 199, 0.4);
+        }
+
+        /* Optional: like button white */
+        .like-btn {
+            background: #ffffff;
+            color: #111111;
+            padding: 4px 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .like-btn svg path {
+            stroke: #111111;
+        }
+
+        .like-btn:hover svg path,
+        .like-btn.liked svg path {
+            stroke: var(--accent);
+            fill: var(--accent);
+        }
+
+        .like-btn.liked {
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -826,14 +886,13 @@
         <div class="panel" id="panel-frens">
             <div class="panel-inner">
                 <ul class="frens-list">
-                    <li>crazy</li>
-                    <li>notagirl</li>
+                    <li>unity</li>
                     <li>makilah</li>
+                    <li>crazy</li>
                     <li>bunny</li>
                     <li>ray</li>
                     <li>sot</li>
                     <li>frog</li>
-                    <li>darkmatter</li>
                 </ul>
             </div>
         </div>
@@ -1369,8 +1428,7 @@
                 r: Math.random() * 2.2 + 0.4,
                 vy: Math.random() * 0.5 + 0.15,
                 vx: (Math.random() - 0.5) * 0.6,
-                o: Math.random() * 0.6 + 0.2,
-                purple: Math.random() > 0.4
+                o: Math.random() * 0.6 + 0.2
             }));
         }
         let fxTime = 0;
@@ -1378,7 +1436,7 @@
             fxTime += 0.02;
             ctx.clearRect(0, 0, w, h);
             for (const p of particles) {
-                ctx.fillStyle = p.purple ? '#B084F5' : '#FFFFFF';
+                ctx.fillStyle = '#FFFFFF';
                 ctx.globalAlpha = p.o * (0.6 + Math.sin(fxTime * 3 + p.x) * 0.4);
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
