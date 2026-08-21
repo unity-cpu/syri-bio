@@ -773,64 +773,37 @@
             }
         }
 
-        /* ===== White buttons (overrides) ===== */
+        /* ===== Make button text white ===== */
         .discord-btn,
-        .tab-btn {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.15);
-            color: #111111;
-        }
-
         .discord-btn:hover,
-        .tab-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            box-shadow: 0 0 18px rgba(255, 158, 199, 0.35);
-            transform: translateY(-1px) scale(1.03);
-        }
-
         .discord-btn.copied {
-            border-color: var(--accent);
-            color: var(--accent);
-            box-shadow: 0 0 18px rgba(255, 158, 199, 0.45);
+            color: #ffffff;
         }
 
         .discord-btn svg path {
-            fill: #111111;
+            fill: #ffffff;
         }
 
-        .discord-btn:hover svg path,
-        .discord-btn.copied svg path {
-            fill: var(--accent);
-        }
-
+        .tab-btn,
+        .tab-btn:hover,
         .tab-btn.active {
-            border-color: var(--accent);
-            color: var(--accent);
-            box-shadow: 0 0 18px rgba(255, 158, 199, 0.4);
+            color: #ffffff;
         }
 
-        /* Optional: like button white */
-        .like-btn {
-            background: #ffffff;
-            color: #111111;
-            padding: 4px 8px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.15);
+        .like-btn,
+        .like-btn:hover,
+        .like-btn.liked {
+            color: #ffffff;
         }
 
         .like-btn svg path {
-            stroke: #111111;
+            stroke: #ffffff;
+            fill: none;
         }
 
-        .like-btn:hover svg path,
         .like-btn.liked svg path {
-            stroke: var(--accent);
-            fill: var(--accent);
-        }
-
-        .like-btn.liked {
-            color: var(--accent);
+            fill: #ffffff;
+            stroke: #ffffff;
         }
     </style>
 </head>
