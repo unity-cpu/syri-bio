@@ -1093,7 +1093,7 @@
 
         // ============ Uptime counter ============
         (function uptimeCounter() {
-            const START = new Date('2025-01-01T00:00:00Z');
+            const START = new Date('2018-08-26T00:00:00Z');
             const el = document.getElementById('uptimeValue');
             if (!el) return;
 
@@ -1275,8 +1275,8 @@
 
         const SWEEP_DURATION = 1.1;
         const SWEEP_SPEED = 0.7;
-        const COLOR_A = [141, 92, 255];
-        const COLOR_B = [255, 255, 255];
+        const COLOR_A = [173, 216, 230]; // Light blue
+        const COLOR_B = [255, 182, 193]; // Light pink
 
         function lerp(a, b, t) { return a + (b - a) * t; }
         function repeat(t, length) { return t - Math.floor(t / length) * length; }
