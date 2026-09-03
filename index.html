@@ -11,8 +11,8 @@
             --bg: #000000;
             --panel: rgba(16,13,22,0.92);
             --panel-border: rgba(255,255,255,0.10);
-            --accent: #FF9EC7;
-            --accent-2: #FF6FB0;
+            --accent: #313131;
+            --accent-2: #353435;
             --accent-dim: rgba(255,158,199,0.35);
             --text: #ffffff;
             --muted: #b8a9c9;
@@ -123,19 +123,19 @@
             height: 116px;
             border-radius: 50%;
             padding: 3px;
-            background: conic-gradient(from 180deg, #ffffff, var(--accent), #ffffff, var(--accent-2), #ffffff);
-            box-shadow: 0 0 30px rgba(255,158,199,0.45), 0 0 70px rgba(255,158,199,0.25);
+            background: conic-gradient(from 180deg, #ffffff, #888888, #ffffff, #aaaaaa, #ffffff);
+            box-shadow: 0 0 30px rgba(160,160,160,0.45), 0 0 70px rgba(160,160,160,0.25);
             margin-bottom: 20px;
             animation: pulseGlow 1.6s ease-in-out infinite;
         }
 
         @keyframes pulseGlow {
             0%,100% {
-                box-shadow: 0 0 30px rgba(255,158,199,0.45), 0 0 70px rgba(255,158,199,0.25);
+                box-shadow: 0 0 30px rgba(160,160,160,0.45), 0 0 70px rgba(160,160,160,0.25);
             }
 
             50% {
-                box-shadow: 0 0 45px rgba(255,158,199,0.75), 0 0 100px rgba(255,158,199,0.45);
+                box-shadow: 0 0 45px rgba(180,180,180,0.75), 0 0 100px rgba(160,160,160,0.45);
             }
         }
 
@@ -808,12 +808,12 @@
     <canvas id="fx"></canvas>
 
     <audio id="bgm" loop preload="none">
-        <source src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/Suki%20Waterhouse%20-%20Good%20Looking%20(Official%20Video)%20(RM3Lvhd899I).mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/SAINT.mp3" type="audio/mpeg">
     </audio>
 
     <div class="card">
         <div class="avatar-wrap">
-            <img class="avatar" src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/IMG_8208.jpg" alt="avatar">
+            <img class="avatar" src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/Herunterladen_20.jpg" alt="avatar">
             <div class="status-dot offline" id="statusDot"></div>
         </div>
 
@@ -914,7 +914,7 @@
     <script>
         const BACKGROUND = {
             type: 'image',
-            url: 'https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/402fee46569bca8a18c75c045d6c96f5.gif'
+            url: 'https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/abonded_castle.jpg'
         };
 
         (function setupBackground() {
@@ -1286,8 +1286,8 @@
 
         const SWEEP_DURATION = 1.1;
         const SWEEP_SPEED = 0.7;
-        const COLOR_A = [111, 150, 255]; // Slightly lighter blue
-        const COLOR_B = [255, 182, 193]; // Light pink
+        const COLOR_A = [0, 0, 0]; // Slightly lighter blue
+        const COLOR_B = [128, 128, 128]; // Light pink
 
         function lerp(a, b, t) { return a + (b - a) * t; }
         function repeat(t, length) { return t - Math.floor(t / length) * length; }
