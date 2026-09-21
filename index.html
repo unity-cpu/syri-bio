@@ -746,6 +746,12 @@
             color: var(--accent);
             font-weight: 500;
         }
+        #uptimeValue,
+        #timer1Value,
+        #timer2Value {
+            color: var(--accent);
+            font-weight: 500;
+        }
 
         .footer-note {
             font-size: 12px;
@@ -798,6 +804,61 @@
         .tab-btn.active {
             color: #ffffff;
         }
+        .time-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .time-chip {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            border-radius: 999px;
+            padding: 5px 13px;
+            font-size: 12.5px;
+            color: var(--muted);
+            letter-spacing: 0.02em;
+            font-variant-numeric: tabular-nums;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .time-chip:hover {
+            border-color: var(--accent-dim);
+            box-shadow: 0 0 14px rgba(255,158,199,0.18);
+        }
+
+        .time-chip svg {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
+        }
+
+        .time-chip svg path {
+            fill: var(--muted);
+        }
+
+        .time-chip .time-value {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .time-chip .time-sub {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        /* Add this to your existing <style> block, near the #uptimeValue rule */
+        #uptimeValue,
+        #localTimeValue,
+        #remoteTimeValue {
+            color: var(--accent);
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -813,7 +874,7 @@
 
     <div class="card">
         <div class="avatar-wrap">
-            <img class="avatar" src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/IMG_9335.jpg" alt="avatar">
+            <img class="avatar" src="https://raw.githubusercontent.com/unity-cpu/gaybez-is-gay/main/IMG_9337.jpg" alt="avatar">
             <div class="status-dot offline" id="statusDot"></div>
         </div>
 
@@ -895,12 +956,16 @@
                 <span id="likeCount">…</span>
             </button>
         </div>
+        <!-- Paste these right after your existing .uptime-row div -->
+        <div class="uptime-row">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 10.41 4.29 4.3-1.42 1.41L11 13V6h2Z" /></svg>
+            <span id="timer1Value">…</span>
+        </div>
 
         <div class="uptime-row">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 10.41 4.29 4.3-1.42 1.41L11 13V6h2Z" /></svg>
-            <span id="uptimeValue">…</span>
+            <span id="timer2Value">…</span>
         </div>
-
         <div class="footer-note"></div>
     </div>
 
@@ -1100,6 +1165,49 @@
             } catch (e) {
                 el.textContent = '—';
             }
+        })();
+        // Paste this near your uptime counter IIFE
+        (function dateCounters() {
+            const timer1El = document.getElementById('timer1Value');
+            const timer2El = document.getElementById('timer2Value');
+            if (!timer1El || !timer2El) return;
+
+            // 👇 Change these dates to whatever you want
+            const TIMER_1 = {
+                el: timer1El,
+                start: new Date('2018-08-26T00:00:00Z'),
+                label: 'me and makilah have been frens'
+            };
+
+            const TIMER_2 = {
+                el: timer2El,
+                start: new Date('2026-01-24T00:00:00'),
+                label: 'this is when i turned gay'
+            };
+
+            const pad = n => String(n).padStart(2, '0');
+
+            function update(t) {
+                const now = new Date();
+                let diff = Math.floor((now - t.start) / 1000);
+                if (diff < 0) diff = 0;
+
+                const days = Math.floor(diff / 86400);
+                const hours = Math.floor((diff % 86400) / 3600);
+                const minutes = Math.floor((diff % 3600) / 60);
+                const seconds = diff % 60;
+
+                t.el.textContent =
+                    `${days}d ${pad(hours)}:${pad(minutes)}:${pad(seconds)} ${t.label}`;
+            }
+
+            function tick() {
+                update(TIMER_1);
+                update(TIMER_2);
+            }
+
+            tick();
+            setInterval(tick, 1000);
         })();
 
         // ============ Uptime counter ============
