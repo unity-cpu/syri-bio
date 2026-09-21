@@ -719,8 +719,9 @@
             }
         }
 
-        /* uptime counter */
+        /* ===== timer rows + hover tooltips ===== */
         .uptime-row {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -730,58 +731,97 @@
             letter-spacing: 0.02em;
             margin-top: 10px;
             opacity: 0.85;
+            cursor: default;
+            transition: color .25s ease, opacity .25s ease;
         }
 
-            .uptime-row svg {
-                width: 12px;
-                height: 12px;
-                flex-shrink: 0;
-            }
-
-                .uptime-row svg path {
-                    fill: var(--muted);
-                }
-
-        #uptimeValue {
+        .uptime-row:hover {
             color: var(--accent);
-            font-weight: 500;
+            opacity: 1;
         }
-        #uptimeValue,
+
+        .uptime-row svg {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
+        }
+
+        .uptime-row svg path {
+            fill: var(--muted);
+            transition: fill .25s ease;
+        }
+
+        .uptime-row:hover svg path {
+            fill: var(--accent);
+        }
+
         #timer1Value,
         #timer2Value {
             color: var(--accent);
             font-weight: 500;
         }
-        .uptime-row {
-            position: relative;
-            cursor: default;
-        }
 
-        .uptime-row[data-tip]::after {
+        /* tooltip bubble */
+        .uptime-row[data-tip]::before {
             content: attr(data-tip);
             position: absolute;
-            bottom: calc(100% + 8px);
+            bottom: calc(100% + 12px);
             left: 50%;
-            transform: translateX(-50%) translateY(4px);
-            background: rgba(16,13,22,0.98);
-            border: 1px solid var(--panel-border);
+            transform: translateX(-50%) translateY(6px) scale(0.94);
+            transform-origin: center bottom;
+
+            padding: 7px 13px;
+            border-radius: 10px;
+
+            background: linear-gradient(180deg, rgba(30,22,38,0.98), rgba(16,13,22,0.98));
+            border: 1px solid rgba(255,158,199,0.28);
             color: var(--accent);
-            font-size: 11px;
+            font-size: 11.5px;
             font-weight: 500;
-            letter-spacing: 0.02em;
-            padding: 5px 10px;
-            border-radius: 8px;
+            letter-spacing: 0.03em;
             white-space: nowrap;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.55),
+                0 0 20px rgba(255,158,199,0.18),
+                inset 0 1px 0 rgba(255,255,255,0.06);
+
             opacity: 0;
             pointer-events: none;
-            transition: opacity .2s ease, transform .2s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            z-index: 10;
+            transition:
+                opacity .22s ease,
+                transform .28s cubic-bezier(.34,1.56,.64,1);
+            z-index: 20;
         }
 
+        /* little arrow */
+        .uptime-row[data-tip]::after {
+            content: "";
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%) translateY(6px) scale(0.94);
+            transform-origin: center bottom;
+
+            width: 8px;
+            height: 8px;
+            background: rgba(16,13,22,0.98);
+            border-right: 1px solid rgba(255,158,199,0.28);
+            border-bottom: 1px solid rgba(255,158,199,0.28);
+            rotate: 45deg;
+
+            opacity: 0;
+            pointer-events: none;
+            transition:
+                opacity .22s ease,
+                transform .28s cubic-bezier(.34,1.56,.64,1);
+            z-index: 21;
+        }
+
+        .uptime-row[data-tip]:hover::before,
         .uptime-row[data-tip]:hover::after {
             opacity: 1;
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0) scale(1);
         }
 
         .footer-note {
@@ -834,61 +874,6 @@
         .tab-btn:hover,
         .tab-btn.active {
             color: #ffffff;
-        }
-        .time-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 14px;
-        }
-
-        .time-chip {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            background: var(--panel);
-            border: 1px solid var(--panel-border);
-            border-radius: 999px;
-            padding: 5px 13px;
-            font-size: 12.5px;
-            color: var(--muted);
-            letter-spacing: 0.02em;
-            font-variant-numeric: tabular-nums;
-            transition: border-color .2s, box-shadow .2s;
-        }
-
-        .time-chip:hover {
-            border-color: var(--accent-dim);
-            box-shadow: 0 0 14px rgba(255,158,199,0.18);
-        }
-
-        .time-chip svg {
-            width: 12px;
-            height: 12px;
-            flex-shrink: 0;
-        }
-
-        .time-chip svg path {
-            fill: var(--muted);
-        }
-
-        .time-chip .time-value {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .time-chip .time-sub {
-            font-size: 11px;
-            opacity: 0.8;
-        }
-        /* Add this to your existing <style> block, near the #uptimeValue rule */
-        #uptimeValue,
-        #localTimeValue,
-        #remoteTimeValue {
-            color: var(--accent);
-            font-weight: 500;
         }
     </style>
 </head>
@@ -987,7 +972,8 @@
                 <span id="likeCount">…</span>
             </button>
         </div>
-        <div class="uptime-row" data-tip="time since me and makilah started dating 💕">
+
+        <div class="uptime-row" data-tip="time since me and makilah became friends">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 10.41 4.29 4.3-1.42 1.41L11 13V6h2Z" /></svg>
             <span id="timer1Value"></span>
         </div>
@@ -996,6 +982,7 @@
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 10.41 4.29 4.3-1.42 1.41L11 13V6h2Z" /></svg>
             <span id="timer2Value"></span>
         </div>
+
         <div class="footer-note"></div>
     </div>
 
@@ -1139,19 +1126,6 @@
         })();
 
         // ============ Live "online now" presence (Firebase Realtime Database) ============
-        // SETUP REQUIRED (one-time, ~3 min):
-        // 1. console.firebase.google.com -> New project -> Build > Realtime Database -> Create (test mode)
-        // 2. Build > Authentication -> Sign-in method -> enable "Anonymous"
-        // 3. Project settings (gear icon) -> your web app -> copy the config values below
-        // 4. In Realtime Database > Rules, paste:
-        //    {
-        //      "rules": {
-        //        "presence": {
-        //          ".read": true,
-        //          "$uid": { ".write": "auth != null && auth.uid === $uid" }
-        //        }
-        //      }
-        //    }
         (function onlinePresence() {
             const firebaseConfig = {
                 apiKey: "AIzaSyAaXxVIRVEcSbNwuzOvWq0p73VUOexgP4w",
@@ -1163,7 +1137,6 @@
             const el = document.getElementById('onlineCount');
             if (!el) return;
 
-            // Bail out quietly if config hasn't been filled in yet
             if (!firebaseConfig.apiKey || firebaseConfig.apiKey === "YOUR_API_KEY") {
                 el.textContent = '—';
                 return;
@@ -1196,14 +1169,16 @@
                 el.textContent = '—';
             }
         })();
-        // Paste this near your uptime counter IIFE
+
+        // ============ Date counters (with hover tooltips) ============
         (function dateCounters() {
             const timer1El = document.getElementById('timer1Value');
             const timer2El = document.getElementById('timer2Value');
             if (!timer1El || !timer2El) return;
 
-            const TIMER_1 = { el: timer1El, start: new Date('2018-08-26T00:00:00Z') };
-            const TIMER_2 = { el: timer2El, start: new Date('2026-01-24T00:00:00') };
+            // 👇 Change these dates to whatever you want
+            const TIMER_1 = { el: timer1El, start: new Date('2026-01-24T00:00:00') };
+            const TIMER_2 = { el: timer2El, start: new Date('2024-06-15T00:00:00') };
 
             const pad = n => String(n).padStart(2, '0');
 
@@ -1227,29 +1202,6 @@
 
             tick();
             setInterval(tick, 1000);
-        })();
-
-        // ============ Uptime counter ============
-        (function uptimeCounter() {
-            const START = new Date('2018-08-26T00:00:00Z');
-            const el = document.getElementById('uptimeValue');
-            if (!el) return;
-
-            function pad(n) { return String(n).padStart(2, '0'); }
-
-            function update() {
-                const now = new Date();
-                let diffMs = now - START;
-                if (diffMs < 0) diffMs = 0;
-                const totalSeconds = Math.floor(diffMs / 1000);
-                const days = Math.floor(totalSeconds / 86400);
-                const hours = Math.floor((totalSeconds % 86400) / 3600);
-                const minutes = Math.floor((totalSeconds % 3600) / 60);
-                const seconds = totalSeconds % 60;
-                el.textContent = `${days}d ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-            }
-            update();
-            setInterval(update, 1000);
         })();
 
         (function viewCounter() {
@@ -1412,8 +1364,8 @@
 
         const SWEEP_DURATION = 0.7;
         const SWEEP_SPEED = 0.2;
-        const COLOR_A = [0, 0, 0]; // Slightly lighter blue
-        const COLOR_B = [128, 128, 128]; // Light pink
+        const COLOR_A = [0, 0, 0];
+        const COLOR_B = [128, 128, 128];
 
         function lerp(a, b, t) { return a + (b - a) * t; }
         function repeat(t, length) { return t - Math.floor(t / length) * length; }
