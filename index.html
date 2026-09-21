@@ -752,6 +752,37 @@
             color: var(--accent);
             font-weight: 500;
         }
+        .uptime-row {
+            position: relative;
+            cursor: default;
+        }
+
+        .uptime-row[data-tip]::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: rgba(16,13,22,0.98);
+            border: 1px solid var(--panel-border);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s ease, transform .2s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .uptime-row[data-tip]:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
 
         .footer-note {
             font-size: 12px;
@@ -956,13 +987,12 @@
                 <span id="likeCount">…</span>
             </button>
         </div>
-        <!-- Paste these right after your existing .uptime-row div -->
-        <div class="uptime-row">
+        <div class="uptime-row" data-tip="time since me and makilah started being friends">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 10.41 4.29 4.3-1.42 1.41L11 13V6h2Z" /></svg>
             <span id="timer1Value"></span>
         </div>
 
-        <div class="uptime-row">
+        <div class="uptime-row" data-tip="once i became gay">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 10.41 4.29 4.3-1.42 1.41L11 13V6h2Z" /></svg>
             <span id="timer2Value"></span>
         </div>
@@ -1172,16 +1202,8 @@
             const timer2El = document.getElementById('timer2Value');
             if (!timer1El || !timer2El) return;
 
-            // 👇 Change these dates to whatever you want
-            const TIMER_1 = {
-                el: timer1El,
-                start: new Date('2018-08-26T00:00:00Z'),
-            };
-
-            const TIMER_2 = {
-                el: timer2El,
-                start: new Date('2026-01-24T00:00:00'),
-            };
+            const TIMER_1 = { el: timer1El, start: new Date('2018-08-26T00:00:00Z') };
+            const TIMER_2 = { el: timer2El, start: new Date('2026-01-24T00:00:00') };
 
             const pad = n => String(n).padStart(2, '0');
 
@@ -1195,8 +1217,7 @@
                 const minutes = Math.floor((diff % 3600) / 60);
                 const seconds = diff % 60;
 
-                t.el.textContent =
-                    `${days}d ${pad(hours)}:${pad(minutes)}:${pad(seconds)} ${t.label}`;
+                t.el.textContent = `${days}d ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
             }
 
             function tick() {
